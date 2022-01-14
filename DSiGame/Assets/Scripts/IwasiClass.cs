@@ -14,4 +14,5 @@ class IwasiCore
     public int attack;
     public int guard;
     public int x, y;
+    public GameObject prefab;
 }
