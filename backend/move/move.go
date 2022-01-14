@@ -19,7 +19,8 @@ var move map[int]*_Move = map[int]*_Move{0: &_Move{0, 0, false, 0, 0, 0}}
 
 func PostMoveGroup(ctx *gin.Context) {
 	var num _Move
-	ctx.BindJSON(move[num.Number])
+	ctx.BindJSON(&num)
+	move[num.Number] = &num
 	move[num.Number].IsMove = true
 	ctx.Status(http.StatusOK)
 }
