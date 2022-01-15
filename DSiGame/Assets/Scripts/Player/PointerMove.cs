@@ -3,17 +3,17 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerCore : MonoBehaviour,IPlayerMove
+    public class PointerMove : MonoBehaviour
     {
         private int squareSize = 10;
-        [SerializeField] public GameObject moveGroup;
+        [SerializeField] private KariIwasiCore moveGroup;
         
         public void OnMove(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
                 Vector2 move = context.ReadValue<Vector2>() * squareSize;
-                PointerMove(move.x, move.y);
+                MovePointer(move.x, move.y);
             }
         }
         
@@ -21,20 +21,19 @@ namespace Player
         {
             if (context.performed)
             {
-                var position = this.transform.position;
-                PlayerMove(position.x, position.z);
+                Vector3 position = this.transform.position;
+                moveGroup.MoveGroup(position.x, position.z);
             }
         }
-
-        private void PointerMove(float x,float y)
+    
+        public void SetMoveGroup(KariIwasiCore group)
         {
-            this.transform.position += new Vector3(x, 0, y);
+            moveGroup = group;
         }
     
-        public void PlayerMove(float x,float y)
+        private void MovePointer(float x,float y)
         {
-            Debug.Log(x + "," + y);
-            moveGroup.transform.position = new Vector3(x, 1, y);
+            this.transform.position += new Vector3(x, 0, y);
         }
     }
 }
