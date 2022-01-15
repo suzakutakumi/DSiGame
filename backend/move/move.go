@@ -17,6 +17,14 @@ type _Move struct {
 
 var move map[int]*_Move = map[int]*_Move{0: &_Move{0, 0, false, 0, 0, 0}}
 
+func NewRoom(num int) {
+	move[num] = &_Move{0, 0, false, 0, 0, 0}
+}
+
+func DeleteRoom(num int) {
+	delete(move, num)
+}
+
 func PostMoveGroup(ctx *gin.Context) {
 	var num _Move
 	ctx.BindJSON(&num)
