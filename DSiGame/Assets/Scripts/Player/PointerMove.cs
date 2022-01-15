@@ -28,6 +28,7 @@ namespace Player
 
         public void SetMoveGroup(IwasiMove iwasiMove)
         {
+            Debug.Log("Set");
             moveGroup = iwasiMove;
         }
 

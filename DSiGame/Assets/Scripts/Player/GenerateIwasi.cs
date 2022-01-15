@@ -14,6 +14,11 @@ namespace Player
             _iwasiSetting = GetComponent<IwasiSetting>();
             _gameManager = GetComponent<GameManager>();
             Generate(type,0,0);
+            
+            //テスト用
+            //Generate(type,10,0);
+            //Generate(type,0,10);
+            //Generate(type,10,10);
         }
 
         public void Generate(int type,int x,int y)
