@@ -36,10 +36,10 @@ type _Evolution struct {
 }*/
 
 type _Action struct {
-	Number     int         `form:"number" json:number`
-	PlayerId   int         `json:playerId`
-	WhatAction interface{} `json:whatAction`
-	Action     interface{} `json:action`
+	Number     int         `form:"number" json:"number"`
+	PlayerId   int         `json:"playerId"`
+	WhatAction interface{} `json:"whatAction"`
+	Action     interface{} `json:"action"`
 }
 
 var action map[int]*_Action = map[int]*_Action{0: &_Action{0, 0, nil, nil}}
