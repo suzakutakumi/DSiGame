@@ -524,6 +524,46 @@ MonoBehaviour:
     x: 0
     y: 0
     prefab: {fileID: 92927549024132993, guid: 5fac2d2523f964741912a6da7720e348, type: 3}
+  - name: kaeri
+    type: 1
+    sizeOfGroup: 500
+    attack: 5
+    guard: 0
+    x: 0
+    y: 0
+    prefab: {fileID: 92927549024132993, guid: 5fac2d2523f964741912a6da7720e348, type: 3}
+  - name: koba
+    type: 2
+    sizeOfGroup: 100
+    attack: 10
+    guard: 0
+    x: 0
+    y: 0
+    prefab: {fileID: 92927549024132993, guid: 5fac2d2523f964741912a6da7720e348, type: 3}
+  - name: koba
+    type: 2
+    sizeOfGroup: 50
+    attack: 10
+    guard: 0
+    x: 0
+    y: 0
+    prefab: {fileID: 92927549024132993, guid: 5fac2d2523f964741912a6da7720e348, type: 3}
+  - name: choba
+    type: 3
+    sizeOfGroup: 20
+    attack: 10
+    guard: 0
+    x: 0
+    y: 0
+    prefab: {fileID: 92927549024132993, guid: 5fac2d2523f964741912a6da7720e348, type: 3}
+  - name: oba
+    type: 4
+    sizeOfGroup: 1
+    attack: 10
+    guard: 0
+    x: 0
+    y: 0
+    prefab: {fileID: 92927549024132993, guid: 5fac2d2523f964741912a6da7720e348, type: 3}
 --- !u!114 &754274718
 MonoBehaviour:
   m_ObjectHideFlags: 0

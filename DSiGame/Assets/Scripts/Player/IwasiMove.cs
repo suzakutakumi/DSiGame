@@ -6,6 +6,7 @@ namespace Player
     {
         public void MoveGroup(float x, float y)
         {
+            Debug.Log(x + ", " + y);
             this.transform.position = new Vector3(x, 1, y);
         }
     }
