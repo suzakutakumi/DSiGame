@@ -44,6 +44,14 @@ type _Action struct {
 
 var action map[int]*_Action = map[int]*_Action{0: &_Action{0, 0, nil, nil}}
 
+func NewRoom(num int) {
+	action[num] = &_Action{0, 0, nil, nil}
+}
+
+func DeleteRoom(num int) {
+	delete(action, num)
+}
+
 func PostAction(ctx *gin.Context) {
 	var num _Action
 	ctx.BindJSON(&num)
