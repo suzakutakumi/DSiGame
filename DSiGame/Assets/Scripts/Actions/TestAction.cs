@@ -6,6 +6,8 @@ public class TestAction : MonoBehaviour
 {
     [SerializeField]
     public BaseActions actions;
+    [SerializeField]
+    private HTTPRequest req;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,20 @@ public class TestAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    //    if (敵の行動終わったら)
+    //    {
+    //        req.GET("http://localhost:8080/moveGroup?number=" + move.number.ToString());
+    //    }
+    //    if (自分の行動が終わったら)
+    //    {
+    //        string body = JsonUtility.ToJson(move);
+    //        req.POST("http://localhost:8080/moveGroup", body);
+    //    }
+    //    if (req.result != null)
+    //    {
+    //        var res = MoveStruct.Deserialize(req.result);
+    //        Debug.Log(JsonUtility.ToJson(res));
+    //        req.result = null;
+    //    }
     }
 }
