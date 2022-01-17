@@ -16,9 +16,9 @@ namespace Player
             Generate(type,0,0);
             
             //テスト用
-            //Generate(type,10,0);
-            //Generate(type,0,10);
-            //Generate(type,10,10);
+            Generate(type,10,0);
+            Generate(type,0,10);
+            Generate(type,10,10);
         }
 
         public void Generate(int type,int x,int y)

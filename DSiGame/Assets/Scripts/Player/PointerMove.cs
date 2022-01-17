@@ -22,7 +22,7 @@ namespace Player
             if (context.performed)
             {
                 Vector3 position = this.transform.position;
-                moveGroup.MoveGroup(position.x, position.z);
+                MoveGroup(position.x, position.z);
             }
         }
 
@@ -30,6 +30,11 @@ namespace Player
         {
             Debug.Log("Set");
             moveGroup = iwasiMove;
+        }
+
+        public void MoveGroup(float x, float y)
+        {
+            moveGroup.MoveGroup(x,y);
         }
 
         private void MovePointer(float x,float y)

@@ -30,4 +30,9 @@ public class GameManager : MonoBehaviour
         IwasiMove iwasiMove = nowPlayerGroup[groupId].GetComponent<IwasiMove>();
         _pointerMove.SetMoveGroup(iwasiMove);
     }
+
+    public void MoveGroup(int x,int y)
+    {
+        _pointerMove.MoveGroup(x*10,y*10);
+    }
 }
