@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 92927549024133023}
   - component: {fileID: 92927549024133022}
   - component: {fileID: 3991976888938759052}
+  - component: {fileID: 3013032802249920695}
   m_Layer: 0
   m_Name: GroupTestTemp
   m_TagString: Untagged
@@ -109,3 +110,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff38ab2b2b422b4bb292d7c4ea4fa9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3013032802249920695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92927549024132993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8673778eb9753054d880a179c84a7f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  type: 0
+  sizeOfGroup: 0
+  attack: 0
+  guard: 0
+  x: 0
+  y: 0

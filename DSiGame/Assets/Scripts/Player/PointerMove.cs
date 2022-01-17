@@ -6,7 +6,7 @@ namespace Player
     public class PointerMove : MonoBehaviour
     {
         private int squareSize = 10;
-        [SerializeField] private IwasiMove moveGroup;
+        [SerializeField] private IwasiCore moveGroup;
         
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -22,19 +22,13 @@ namespace Player
             if (context.performed)
             {
                 Vector3 position = this.transform.position;
-                MoveGroup(position.x, position.z);
+                moveGroup.MoveGroup(position.x, position.z);
             }
         }
 
-        public void SetMoveGroup(IwasiMove iwasiMove)
+        public void SetIwasi(IwasiCore iwasiCore)
         {
-            Debug.Log("Set");
-            moveGroup = iwasiMove;
-        }
-
-        public void MoveGroup(float x, float y)
-        {
-            moveGroup.MoveGroup(x,y);
+            moveGroup = iwasiCore;
         }
 
         private void MovePointer(float x,float y)

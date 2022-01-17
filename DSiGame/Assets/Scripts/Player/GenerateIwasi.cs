@@ -25,6 +25,7 @@ namespace Player
         {
             GameObject prefab = _iwasiSetting.GetIwasiSetting(type).prefab;
             GameObject gameObject = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity);
+            gameObject.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
             _gameManager.AddGroupToList(gameObject);
         }
     }
