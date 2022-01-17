@@ -11,6 +11,7 @@ namespace Player
 
         [SerializeField] private PointerMove _pointerMove;
         [SerializeField] private GenerateButton _generateButton;
+        private IwasiCore iwasiCore;
 
         private void Start()
         {
@@ -26,13 +27,13 @@ namespace Player
         public void SerectGroup(int groupId)
         {
             Debug.Log("select" + groupId);
-            IwasiMove iwasiMove = nowPlayerGroup[groupId].GetComponent<IwasiMove>();
-            _pointerMove.SetMoveGroup(iwasiMove);
+            iwasiCore = nowPlayerGroup[groupId].GetComponent<IwasiCore>();
+            _pointerMove.SetIwasi(iwasiCore);
         }
 
-        public void MoveGroup(int x,int y)
+        public void MoveGroup(int x, int y)
         {
-            _pointerMove.MoveGroup(x*10,y*10);
+            iwasiCore.MoveGroup(x*10,y*10);
         }
     }
 }
