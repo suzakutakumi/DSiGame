@@ -27,12 +27,12 @@ public class HTTPRequestTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            req.GET("http://192.168.1.95:8080/moveGroup?number="+move.number.ToString());
+            req.GET("http://localhost:8080/moveGroup?number="+move.number.ToString());
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             string body = JsonUtility.ToJson(move);
-            req.POST("http://192.168.1.95:8080/moveGroup",body);
+            req.POST("http://localhost:8080/moveGroup",body);
         }
         if (req.result != null)
         {
