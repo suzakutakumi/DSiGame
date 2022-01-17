@@ -5,19 +5,12 @@ using Player;
 
 public class TestAction : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    [SerializeField]
-    public BaseActions actions;
-    [SerializeField]
-    private HTTPRequest req;
-=======
     public BaseActions info;
 
     [SerializeField]
     private HTTPRequest req;
     [SerializeField]
-    private GameManager _gameManager;
->>>>>>> Stashed changes
+    //private GameManager _gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -30,23 +23,6 @@ public class TestAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-    //    if (敵の行動終わったら)
-    //    {
-    //        req.GET("http://localhost:8080/moveGroup?number=" + move.number.ToString());
-    //    }
-    //    if (自分の行動が終わったら)
-    //    {
-    //        string body = JsonUtility.ToJson(move);
-    //        req.POST("http://localhost:8080/moveGroup", body);
-    //    }
-    //    if (req.result != null)
-    //    {
-    //        var res = MoveStruct.Deserialize(req.result);
-    //        Debug.Log(JsonUtility.ToJson(res));
-    //        req.result = null;
-    //    }
-=======
         if (Input.GetKeyDown(KeyCode.Space))
         {
             req.GET("http://localhost:8080/moveGroup?number=" + info.number.ToString());
@@ -62,6 +38,5 @@ public class TestAction : MonoBehaviour
             Debug.Log(JsonUtility.ToJson(res));
             req.result = null;
         }
->>>>>>> Stashed changes
     }
 }
