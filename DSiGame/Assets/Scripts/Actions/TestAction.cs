@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TestAction : MonoBehaviour
 {
+    int number;
+    int playerId;
+    string whatAction;
     [SerializeField]
     public BaseActions actions;
 
