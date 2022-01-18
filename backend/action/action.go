@@ -6,26 +6,22 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type detailOfAction struct {
-	FromId    int `json:"fromId"`
-	ToId      int `json:"toId"`
-	NewId     int `json:"newId"`
-	X         int `json:"x"`
-	Z         int `json:"z"`
-	MoveCount int `json:"moveCount"`
-}
-
 type _Action struct {
-	Number     int            `form:"number" json:"number"`
-	PlayerId   int            `json:"playerId"`
-	WhatAction interface{}    `json:"whatAction"`
-	Action     detailOfAction `json:"action"`
+	Number     int         `form:"number" json:"number"`
+	PlayerId   int         `json:"playerId"`
+	WhatAction interface{} `json:"whatAction"`
+	FromId     int         `json:"fromId"`
+	ToId       int         `json:"toId"`
+	NewId      int         `json:"newId"`
+	X          int         `json:"x"`
+	Z          int         `json:"z"`
+	MoveCount  int         `json:"moveCount"`
 }
 
-var action map[int]*_Action = map[int]*_Action{0: {0, 0, nil, detailOfAction{0, 0, 0, 0, 0, 0}}}
+var action map[int]*_Action = map[int]*_Action{0: {0, 0, nil, 0, 0, 0, 0, 0, 0}}
 
 func NewRoom(num int) {
-	action[num] = &_Action{0, 0, nil, detailOfAction{0, 0, 0, 0, 0, 0}}
+	action[num] = &_Action{0, 0, nil, 0, 0, 0, 0, 0, 0}
 }
 
 func DeleteRoom(num int) {
