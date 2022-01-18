@@ -43,7 +43,8 @@ public class ActionManager : MonoBehaviour
 
     public void Evolution()
     {
-
+        generate.Generate(fromIwasi.type + 1, fromIwasi.x, fromIwasi.y);
+        fromIwasi.GiveOrTake(fromIwasi.sizeOfGroup / 2);
     }
 
     public void NoAction()
