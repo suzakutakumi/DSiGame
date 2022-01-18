@@ -54,12 +54,19 @@ func EnterRoom(ctx *gin.Context) {
 	var num _Number
 	ctx.BindJSON(&num)
 
+	numFlg := true
 	for key, _ := range roomNumbers {
 		if key == num.Number {
-			ctx.Status(http.StatusBadRequest)
+			numFlg = false
+			break
 		}
 	}
+	if numFlg {
+		ctx.Status(http.StatusBadRequest)
+		return
+	}
 	roomNumbers[num.Number].IsStart.IsStart = true
+	roomNumbers[num.Number].Number.IsFirst = !roomNumbers[num.Number].Number.IsFirst
 	ctx.JSON(http.StatusOK, roomNumbers[num.Number].Number)
 }
 
