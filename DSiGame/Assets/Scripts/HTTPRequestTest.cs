@@ -20,6 +20,7 @@ public class HTTPRequestTest : MonoBehaviour
         move.groupId = 0;
         move.x = 2;
         move.y = 4;
+        req.result = null;
     }
 
     // Update is called once per frame
@@ -27,20 +28,20 @@ public class HTTPRequestTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            req.GET("http://localhost:8080/moveGroup?number="+move.number.ToString());
+            req.GET("https://fishevolution.herokuapp.com/moveGroup?number="+move.number.ToString());
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             string body = JsonUtility.ToJson(move);
-            req.POST("http://localhost:8080/moveGroup",body);
+            req.POST("https://fishevolution.herokuapp.com/moveGroup",body);
         }
         if (req.result != null)
         {
             var res=MoveStruct.Deserialize(req.result);
             Debug.Log(JsonUtility.ToJson(res));
-            _gameManager.SerectGroup(res.groupId);
+            _gameManager.SerectOpponentGroup(res.groupId);
             _gameManager.MoveGroup(res.x,res.y);
             req.result = null;
-        }
+        }else Debug.Log("reqはnull！！");
     }
 }

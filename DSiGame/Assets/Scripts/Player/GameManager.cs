@@ -6,28 +6,46 @@ namespace Player
     public class GameManager : MonoBehaviour
     {
         public List<GameObject> nowPlayerGroup = new List<GameObject>();
-        private List<GameObject> nowOpponentGroup = new List<GameObject>();
-        public int nowGroupId = 0;
+        public List<GameObject> nowOpponentGroup = new List<GameObject>();
+        public int myId;
+        public int opponentId;
 
         [SerializeField] private PointerMove _pointerMove;
         [SerializeField] private GenerateButton _generateButton;
         private IwasiCore iwasiCore;
 
-        private void Start()
+        private void Awake()
         {
-        
+            SetPlayerId(0,1);
         }
 
-        public void AddGroupToList(GameObject gameObject)
+        public void SetPlayerId(int player,int opponent)
+        {
+            myId = player;
+            opponentId = opponent;
+        }
+
+        public void AddGroupToPlayerList(GameObject gameObject)
         {
             nowPlayerGroup.Add(gameObject);
             _generateButton.Generate(nowPlayerGroup.Count-1);
+        }
+
+        public void AddGroupToOpponentList(GameObject gameObject)
+        {
+            nowOpponentGroup.Add(gameObject);
         }
 
         public void SerectGroup(int groupId)
         {
             Debug.Log("select" + groupId);
             iwasiCore = nowPlayerGroup[groupId].GetComponent<IwasiCore>();
+            _pointerMove.SetIwasi(iwasiCore);
+        }
+
+        public void SerectOpponentGroup(int groupId)
+        {
+            iwasiCore = nowOpponentGroup[groupId].GetComponent<IwasiCore>();
             _pointerMove.SetIwasi(iwasiCore);
         }
 
