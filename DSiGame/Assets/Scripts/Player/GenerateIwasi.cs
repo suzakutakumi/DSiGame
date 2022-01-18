@@ -35,7 +35,7 @@ namespace Player
             }
             if (playerId == _gameManager.opponentId)
             {
-                GameObject generatePrefab = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity,opponentGroup);
+                GameObject generatePrefab = Instantiate(prefab, new Vector3(x, 1, y), new Quaternion(0,180,0,0),opponentGroup);
                 generatePrefab.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
                 _gameManager.AddGroupToOpponentList(generatePrefab);
             }
