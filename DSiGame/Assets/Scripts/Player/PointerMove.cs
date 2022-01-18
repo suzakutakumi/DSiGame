@@ -22,7 +22,11 @@ namespace Player
             if (context.performed)
             {
                 Vector3 position = this.transform.position;
-                moveGroup.MoveGroup(position.x, position.z);
+                if (moveGroup!=null)
+                {
+                    moveGroup.MoveGroup(position.x, position.z);
+                }
+                else Debug.Log("操作する群れを選んでください");
             }
         }
 

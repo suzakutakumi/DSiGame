@@ -5,38 +5,70 @@ using Player;
 
 public class TestAction : MonoBehaviour
 {
-    public BaseActions info;
+    public BaseActions info = new BaseActions();
 
     [SerializeField]
     private HTTPRequest req;
     [SerializeField]
-    //private GameManager _gameManager;
+    private ActionManager _actionManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        //string json = "{\"fromId\":0,\"toId\":100,\"newId\":31,\"x\":10,\"z\":20,\"moveCount\":12}";
-        //Debug.Log(json);
-        //actions = BaseActions.Deserialize(json);
+        req.result = null;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("FirstUpdate");
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            req.GET("http://localhost:8080/moveGroup?number=" + info.number.ToString());
+            req.GET("https://fishevolution.herokuapp.com/action?number=" + info.number.ToString());
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             string body = JsonUtility.ToJson(info);
-            req.POST("http://localhost:8080/moveGroup", body);
+            req.POST("https://fishevolution.herokuapp.com/action", body);
         }
         if (req.result != null)
         {
-            var res = JsonUtility.FromJson<BaseActions>(req.result);
+            //var res = JsonUtility.FromJson<BaseActions>(req.result);
+            BaseActions res = new BaseActions();
+            res.fromId = 0;
+            res.toId = 0;
+            res.moveCount = 150;
+            res.whatAction = "attack";
             Debug.Log(JsonUtility.ToJson(res));
-            req.result = null;
+
+            _actionManager.getID(res.fromId, res.toId);
+            switch (res.whatAction)
+            {
+                case "attack":
+                    _actionManager.Attack();
+                    req.result = null;
+                    break;
+                case "exchange":
+                    _actionManager.Exchange(res.moveCount);
+                    req.result = null;
+                    break;
+                case "create":
+                    _actionManager.Create(res.moveCount);
+                    req.result = null;
+                    break;
+                case "evolution":
+                    _actionManager.Evolution();
+                    req.result = null;
+                    break;
+                case "noAction":
+                    //_actionManager.NoAction();
+                    req.result = null;
+                    break;
+                default:
+                    req.result = null;
+                    break;
+            }
         }
     }
 }

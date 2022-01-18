@@ -31,7 +31,7 @@ namespace Player
             this.sizeOfGroup -= enemy.attack / this.guard;
         }
 
-        public void giveOrTake(int val)
+        public void GiveOrTake(int val)
         {
             this.sizeOfGroup += val;
         }

@@ -13,15 +13,15 @@ public class HTTPRequest:MonoBehaviour
     {
         StartCoroutine(POSTCoroutine(url,body));
     }
+    public void DELETE(string url)
+    {
+        StartCoroutine(DELETECoroutine(url));
+    }
     private IEnumerator GETCoroutine(string url)
     {
         UnityWebRequest req = UnityWebRequest.Get(url);
         yield return req.SendWebRequest();
-        if (req.isNetworkError)
-        {
-            result = req.error;
-        }
-        else if (req.isHttpError)
+        if (req.result == UnityWebRequest.Result.ConnectionError)
         {
             result = req.error;
         }
@@ -39,11 +39,20 @@ public class HTTPRequest:MonoBehaviour
         req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
-        if (req.isNetworkError)
+        if (req.result == UnityWebRequest.Result.ConnectionError)
         {
             result = req.error;
         }
-        else if (req.isHttpError)
+        else if (req.downloadHandler.text != "")
+        {
+            result=req.downloadHandler.text;
+        }
+    }
+    private IEnumerator DELETECoroutine(string url)
+    {
+        UnityWebRequest req = UnityWebRequest.Delete(url);
+        yield return req.SendWebRequest();
+        if (req.result == UnityWebRequest.Result.ConnectionError)
         {
             result = req.error;
         }
