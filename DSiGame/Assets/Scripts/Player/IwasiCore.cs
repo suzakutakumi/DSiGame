@@ -24,5 +24,21 @@ namespace Player
             Debug.Log(x + ", " + y);
             this.transform.position = new Vector3(x, 1, y);
         }
+
+        public void Damaged(IwasiCore enemy)
+        {
+            Debug.Log("Damaged" + enemy.attack / this.guard);
+            this.sizeOfGroup -= enemy.attack / this.guard;
+        }
+
+        public void giveOrTake(int val)
+        {
+            this.sizeOfGroup += val;
+        }
+
+        public void Evolution()
+        {
+            this.type++;
+        }
     }
 }
