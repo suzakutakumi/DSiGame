@@ -13,6 +13,7 @@ namespace Player
         [SerializeField] private PointerMove _pointerMove;
         [SerializeField] private GenerateButton _generateButton;
         [SerializeField] private InfoText _infoText;
+        [SerializeField] private PlayerAction _playerAction;
         private IwasiCore iwasiCore;
 
         private void Awake()
@@ -43,6 +44,7 @@ namespace Player
         {
             Debug.Log("select" + groupId);
             iwasiCore = nowPlayerGroup[groupId].GetComponent<IwasiCore>();
+            _playerAction.SetAction(iwasiCore);
             _infoText.SetInfo(iwasiCore);
             _pointerMove.SetIwasi(iwasiCore);
         }
