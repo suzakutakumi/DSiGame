@@ -503,7 +503,7 @@ MonoBehaviour:
     guard: 0
     x: 0
     y: 0
-    prefab: {fileID: 92927549024132993, guid: 5fac2d2523f964741912a6da7720e348, type: 3}
+    prefab: {fileID: 5675225158938088620, guid: 39c7563d5bb202346851cc0f477a7448, type: 3}
   - name: kaeri
     type: 1
     sizeOfGroup: 500
