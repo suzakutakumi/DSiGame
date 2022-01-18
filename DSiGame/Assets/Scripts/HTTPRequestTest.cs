@@ -39,7 +39,7 @@ public class HTTPRequestTest : MonoBehaviour
         {
             var res=MoveStruct.Deserialize(req.result);
             Debug.Log(JsonUtility.ToJson(res));
-            _gameManager.SerectGroup(res.groupId);
+            _gameManager.SerectOpponentGroup(res.groupId);
             _gameManager.MoveGroup(res.x,res.y);
             req.result = null;
         }else Debug.Log("reqはnull！！");

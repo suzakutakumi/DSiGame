@@ -14,10 +14,9 @@ namespace Player
         [SerializeField] private GenerateButton _generateButton;
         private IwasiCore iwasiCore;
 
-        private void Start()
+        private void Awake()
         {
-            myId = 0;
-            opponentId = 1;
+            SetPlayerId(0,1);
         }
 
         public void SetPlayerId(int player,int opponent)
@@ -41,6 +40,12 @@ namespace Player
         {
             Debug.Log("select" + groupId);
             iwasiCore = nowPlayerGroup[groupId].GetComponent<IwasiCore>();
+            _pointerMove.SetIwasi(iwasiCore);
+        }
+
+        public void SerectOpponentGroup(int groupId)
+        {
+            iwasiCore = nowOpponentGroup[groupId].GetComponent<IwasiCore>();
             _pointerMove.SetIwasi(iwasiCore);
         }
 
