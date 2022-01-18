@@ -5,7 +5,7 @@ using Player;
 
 public class ActionManager : MonoBehaviour
 {
-    public List<GameObject> nowPlayerGroup = new List<GameObject>();
+    public GameManager gameManager;
     private IwasiCore fromIwasi;
     private IwasiCore toIwasi;
 
@@ -14,14 +14,14 @@ public class ActionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //”z—ñ‘«‚è‚È‚¢Žž—p
-        generate.Generate(0, 1, 1);
+        //ï¿½zï¿½ñ‘«‚ï¿½È‚ï¿½ï¿½ï¿½ï¿½p
+        //generate.Generate(0, 0, 10,10);
     }
 
     public void getID(int fromId, int toId)
     {
-        fromIwasi = nowPlayerGroup[fromId].GetComponent<IwasiCore>();
-        toIwasi= nowPlayerGroup[toId].GetComponent<IwasiCore>();
+        fromIwasi = gameManager.nowPlayerGroup[fromId].GetComponent<IwasiCore>();
+        toIwasi= gameManager.nowOpponentGroup[toId].GetComponent<IwasiCore>();
     }
 
     public void Attack()
@@ -37,13 +37,13 @@ public class ActionManager : MonoBehaviour
 
     public void Create(int val)
     {
-        generate.Generate(fromIwasi.type, fromIwasi.x, fromIwasi.y);
+        generate.Generate(gameManager.myId,fromIwasi.type, fromIwasi.x, fromIwasi.y);
         fromIwasi.GiveOrTake(-val);
     }
 
     public void Evolution()
     {
-        generate.Generate(fromIwasi.type + 1, fromIwasi.x, fromIwasi.y);
+        generate.Generate(gameManager.myId,fromIwasi.type + 1, fromIwasi.x, fromIwasi.y);
         fromIwasi.GiveOrTake(fromIwasi.sizeOfGroup / 2);
     }
 
