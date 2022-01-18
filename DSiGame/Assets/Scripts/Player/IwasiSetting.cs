@@ -6,8 +6,6 @@ namespace Player
 {
     public class IwasiSetting : MonoBehaviour
     {
-        private int nextId = 0;
-
         [SerializeField] private List<IwasiSettingTemp> iwasiList = new List<IwasiSettingTemp>();
 
         public IwasiSettingTemp GetIwasiSetting(int type)
