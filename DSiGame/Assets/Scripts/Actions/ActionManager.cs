@@ -14,7 +14,8 @@ public class ActionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //”z—ñ‘«‚è‚È‚¢Žž—p
+        generate.Generate(0, 1, 1);
     }
 
     public void getID(int fromId, int toId)
