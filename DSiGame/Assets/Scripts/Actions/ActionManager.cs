@@ -9,7 +9,7 @@ public class ActionManager : MonoBehaviour
     private IwasiCore fromIwasi;
     private IwasiCore toIwasi;
 
-    private GenerateIwasi generate = new GenerateIwasi();
+    [SerializeField] private GenerateIwasi generate = new GenerateIwasi();
 
     // Start is called before the first frame update
     void Start()
