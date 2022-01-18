@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaitEnterRoom : MonoBehaviour
 {
@@ -25,7 +26,12 @@ public class WaitEnterRoom : MonoBehaviour
         if (req.result != null)
         {
             Debug.Log(req.result);
-            //changeScene
+            var r=StartStruct.Deserialize(req.result);
+            if (r.isStart)
+            {
+                Player.GameManager.room = room;
+                SceneManager.LoadScene("PlayerMoveInMap");
+            }
             req.result = null;
             befTime = 0f;
         }

@@ -7,6 +7,7 @@ namespace Player
     {
         public List<GameObject> nowPlayerGroup = new List<GameObject>();
         public List<GameObject> nowOpponentGroup = new List<GameObject>();
+        public static RoomStruct room;
         public int myId;
         public int opponentId;
 
@@ -16,7 +17,14 @@ namespace Player
 
         private void Awake()
         {
-            SetPlayerId(0,1);
+            if (room.isFirst)
+            {
+                SetPlayerId(0, 1);
+            }
+            else
+            {
+                SetPlayerId(1, 0);
+            }
         }
 
         public void SetPlayerId(int player,int opponent)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RoomEnter : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class RoomEnter : MonoBehaviour
         {
             Debug.Log(req.result);
             room = RoomStruct.Deserialize(req.result);
-            //changeScene(game);
+            Player.GameManager.room = room;
+            SceneManager.LoadScene("PlayerMoveInMap");
             req.result = null;
         }
     }
