@@ -13,20 +13,27 @@ namespace Player
         {
             _iwasiSetting = GetComponent<IwasiSetting>();
             _gameManager = GetComponent<GameManager>();
-            Generate(type,0,0);
+            Generate(0,type,0,0);
             
             //テスト用
-            Generate(type,10,0);
-            Generate(type,0,10);
-            Generate(type,10,10);
+            Generate(0,type,10,0);
+            Generate(1,type,0,10);
+            Generate(1,type,10,10);
         }
 
-        public void Generate(int type,int x,int y)
+        public void Generate(int playerId, int type,int x,int y)
         {
             GameObject prefab = _iwasiSetting.GetIwasiSetting(type).prefab;
-            GameObject gameObject = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity);
-            gameObject.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
-            _gameManager.AddGroupToList(gameObject);
+            GameObject generatePrefab = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity);
+            generatePrefab.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
+            if (playerId == _gameManager.myId)
+            {
+                _gameManager.AddGroupToPlayerList(generatePrefab);
+            }
+            else if (playerId == _gameManager.opponentId)
+            {
+                _gameManager.AddGroupToOpponentList(generatePrefab);
+            }
         }
     }
 }

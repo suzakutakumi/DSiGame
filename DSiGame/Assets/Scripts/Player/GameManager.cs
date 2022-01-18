@@ -6,8 +6,9 @@ namespace Player
     public class GameManager : MonoBehaviour
     {
         public List<GameObject> nowPlayerGroup = new List<GameObject>();
-        private List<GameObject> nowOpponentGroup = new List<GameObject>();
-        public int nowGroupId = 0;
+        public List<GameObject> nowOpponentGroup = new List<GameObject>();
+        public int myId;
+        public int opponentId;
 
         [SerializeField] private PointerMove _pointerMove;
         [SerializeField] private GenerateButton _generateButton;
@@ -15,13 +16,25 @@ namespace Player
 
         private void Start()
         {
-        
+            myId = 0;
+            opponentId = 1;
         }
 
-        public void AddGroupToList(GameObject gameObject)
+        public void SetPlayerId(int player,int opponent)
+        {
+            myId = player;
+            opponentId = opponent;
+        }
+
+        public void AddGroupToPlayerList(GameObject gameObject)
         {
             nowPlayerGroup.Add(gameObject);
             _generateButton.Generate(nowPlayerGroup.Count-1);
+        }
+
+        public void AddGroupToOpponentList(GameObject gameObject)
+        {
+            nowOpponentGroup.Add(gameObject);
         }
 
         public void SerectGroup(int groupId)
