@@ -12,6 +12,8 @@ namespace Player
         public int guard;
         public int x, y;
 
+        
+
         public void SetStatusFromTemp(IwasiSettingTemp iwasiSettingTemp)
         {
             type = iwasiSettingTemp.type;
@@ -29,12 +31,17 @@ namespace Player
         public void Damaged(IwasiCore enemy)
         {
             Debug.Log("Damaged" + enemy.attack / this.guard);
-            this.sizeOfGroup -= enemy.attack / this.guard;
+
+            GiveOrTake(-(enemy.attack / this.guard));
         }
 
         public void GiveOrTake(int val)
         {
             this.sizeOfGroup += val;
+            if (this.sizeOfGroup < 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         public void Evolution()
