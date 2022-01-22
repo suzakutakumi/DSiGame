@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum ItemType
+namespace Item
 {
-    Stargazypie,
-    IwasiJam
+    public enum ItemType
+    {
+        StargazyPie,
+        IwasiJam
+    }
 }
