@@ -9,15 +9,5 @@ namespace Item
     public abstract class BaseItem : MonoBehaviour
     {
         protected ItemType type;
-
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-
-        }
     }
 }

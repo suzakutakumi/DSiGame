@@ -6,25 +6,27 @@ using UnityEngine;
 
 namespace Item
 {
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class StargazyPie : BaseItem, IAvailableItem
     {
         [SerializeField] private int _deltaSize;
-
+        [SerializeField] private AudioClip _pickupSound;
+        
         private IwasiCore _iwasiCore;
         private Vector3 _iwasiPos;
-
-        public void PickUp()
-        {
-            _iwasiCore.sizeOfGroup += _deltaSize;
-            Debug.Log(type + " ゲット!");
-            Destroy(gameObject);
-        }
 
         void Start()
         {
             type = ItemType.StargazyPie;
         }
-
+        public void PickUp()
+        {
+            _iwasiCore.sizeOfGroup += _deltaSize;
+           AudioSource.PlayClipAtPoint(_pickupSound, transform.position);
+            Debug.Log(type + " ゲット!");
+            Destroy(gameObject);
+        }
+        
         void Update()
         {
 
