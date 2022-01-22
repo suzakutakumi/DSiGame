@@ -6,11 +6,14 @@ public class CreateStage : MonoBehaviour
 {
 
     [SerializeField]
-    private float GridScale = 0.7f;   //ƒ}ƒX‚Ì”{—¦
+    private float GridScale = 0.7f;   //ï¿½}ï¿½Xï¿½Ì”{ï¿½ï¿½
     [SerializeField]
-    private int NumX = 10;    //‚˜À•W‚Ì”
+    private int NumX = 10;    //ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìï¿½
     [SerializeField]
-    private int NumZ = 10;    //‚šÀ•W‚Ì”
+    private int NumZ = 10;    //ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Ìï¿½
+
+    public int GetX => NumX;
+    public int GetZ => NumZ;
     
     float EdgeLength()
     {
