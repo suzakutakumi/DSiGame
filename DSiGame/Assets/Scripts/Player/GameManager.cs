@@ -52,7 +52,7 @@ namespace Player
         {
             Debug.Log("select" + groupId);
             iwasiCore = nowPlayerGroup[groupId].GetComponent<IwasiCore>();
-            //_playerAction.SetAction(iwasiCore);
+            _playerAction.SetAction(iwasiCore);
             _infoText.SetInfo(iwasiCore);
             _pointerMove.SetIwasi(iwasiCore);
         }
