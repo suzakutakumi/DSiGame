@@ -10,7 +10,7 @@ namespace Player
         public int attack;
         public int guard;
         public int x, y;
-
+        public int moveRange;
         
 
         public void SetStatusFromTemp(IwasiSettingTemp iwasiSettingTemp)
@@ -25,6 +25,8 @@ namespace Player
         {
             Debug.Log(x + ", " + y);
             this.transform.position = new Vector3(x, 1, y);
+            this.x = (int)x;
+            this.y = (int)y;
         }
 
         public void Damaged(IwasiCore enemy)
