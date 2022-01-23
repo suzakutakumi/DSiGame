@@ -45,13 +45,13 @@ public class ActionManager : MonoBehaviour
 
     public void Create(int val)
     {
-        generate.InitialGenerate(gameManager.myId,fromIwasi.type, fromIwasi.x, fromIwasi.y);
+        generate.Generate(gameManager.myId,val,fromIwasi.type, fromIwasi.x, fromIwasi.y);
         fromIwasi.GiveOrTake(-val);
     }
 
     public void Evolution()
     {
-        generate.InitialGenerate(gameManager.myId,fromIwasi.type + 1, fromIwasi.x, fromIwasi.y);
+        generate.Generate(gameManager.myId,10,fromIwasi.type + 1, fromIwasi.x, fromIwasi.y);
         fromIwasi.GiveOrTake(fromIwasi.sizeOfGroup / 2);
     }
 

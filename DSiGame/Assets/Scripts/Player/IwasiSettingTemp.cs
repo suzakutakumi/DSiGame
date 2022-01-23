@@ -11,6 +11,7 @@ namespace Player
         public int attack;
         public int guard;
         public int x, y;
+        public int moveRange;
         public GameObject prefab;
     }
 }

@@ -8,6 +8,8 @@ namespace Player
     {
         private int squareSize = 10;
         private IwasiCore moveGroup;
+        [SerializeField] private GameManager gameManager;
+        
         private MoveRangeLine _line;
         private CreateStage _createStage;
 
@@ -15,6 +17,10 @@ namespace Player
         {
             _line = GetComponent<MoveRangeLine>();
             _createStage = GameObject.Find("PointCreateStage").GetComponent<CreateStage>();
+            
+            Vector3 myInitialPsition = gameManager.nowPlayerGroup[0].transform.position;
+            MovePointer(myInitialPsition.x,myInitialPsition.z);
+            if(gameManager.myId == 1)this.transform.rotation = Quaternion.Euler(0,180,0);
         }
 
         public void OnMove(InputAction.CallbackContext context)

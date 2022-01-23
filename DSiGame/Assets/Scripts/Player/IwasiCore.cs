@@ -19,6 +19,7 @@ namespace Player
             sizeOfGroup = iwasiSettingTemp.sizeOfGroup;
             attack = iwasiSettingTemp.attack;
             guard = iwasiSettingTemp.guard;
+            moveRange = iwasiSettingTemp.moveRange;
         }
         
         public void MoveGroup(float x, float y)
