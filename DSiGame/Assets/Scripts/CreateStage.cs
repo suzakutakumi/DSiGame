@@ -11,9 +11,12 @@ public class CreateStage : MonoBehaviour
     private int NumX = 10;    //�����W�̐�
     [SerializeField]
     private int NumZ = 10;    //�����W�̐�
-
     public int GetX => NumX;
     public int GetZ => NumZ;
+    public float GridSize => GridScale;
+    public int X => NumX;
+    public int Z => NumZ;
+
     
     float EdgeLength()
     {

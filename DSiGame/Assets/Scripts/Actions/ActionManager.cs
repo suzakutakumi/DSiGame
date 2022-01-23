@@ -8,6 +8,7 @@ public class ActionManager : MonoBehaviour
     public GameManager gameManager;
     private IwasiCore fromIwasi;
     private IwasiCore toIwasi;
+    private IwasiCore _iwasiCore;
 
     [SerializeField] private GenerateIwasi generate = new GenerateIwasi();
 
@@ -16,6 +17,13 @@ public class ActionManager : MonoBehaviour
     {
         //�z�񑫂�Ȃ����p
         //generate.Generate(0, 0, 10,10);
+        getID(0,0);
+    }
+    
+    public void SetAction(IwasiCore iwasiCore)
+    {
+        _iwasiCore = iwasiCore;
+        Debug.Log("aaa");
     }
 
     public void getID(int fromId, int toId)
@@ -37,13 +45,13 @@ public class ActionManager : MonoBehaviour
 
     public void Create(int val)
     {
-        generate.Generate(gameManager.myId,fromIwasi.type, fromIwasi.x, fromIwasi.y);
+        generate.Generate(gameManager.myId,val,fromIwasi.type, fromIwasi.x, fromIwasi.y);
         fromIwasi.GiveOrTake(-val);
     }
 
     public void Evolution()
     {
-        generate.Generate(gameManager.myId,fromIwasi.type + 1, fromIwasi.x, fromIwasi.y);
+        generate.Generate(gameManager.myId,10,fromIwasi.type + 1, fromIwasi.x, fromIwasi.y);
         fromIwasi.GiveOrTake(fromIwasi.sizeOfGroup / 2);
     }
 
