@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,8 +9,14 @@ namespace Player
         private IwasiCore moveGroup;
         [SerializeField] private GameManager gameManager;
 
+        private MoveRangeLine _line;
+        private CreateStage _createStage;
+
         private void Start()
         {
+            _line = GetComponent<MoveRangeLine>();
+            _createStage = GameObject.Find("PointCreateStage").GetComponent<CreateStage>();
+            
             Vector3 myInitialPsition = gameManager.nowPlayerGroup[0].transform.position;
             MovePointer(myInitialPsition.x,myInitialPsition.z);
             if(gameManager.myId == 1)this.transform.rotation = Quaternion.Euler(0,180,0);
