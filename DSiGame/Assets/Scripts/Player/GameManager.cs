@@ -14,19 +14,31 @@ namespace Player
         [SerializeField] private PointerMove _pointerMove;
         [SerializeField] private GenerateButton _generateButton;
         [SerializeField] private InfoText _infoText;
-        [SerializeField] private  ActionManager _actionManager;
+        [SerializeField] private ActionManager _actionManager;
+        [SerializeField] private GenerateIwasi _generateIwasi;
         private IwasiCore iwasiCore;
 
         private void Awake()
         {
-            if (room.isFirst)
+            if (room != null)
             {
-                SetPlayerId(0, 1);
+                if (room.isFirst)
+                {
+                    SetPlayerId(0, 1);
+                }
+                else
+                {
+                    SetPlayerId(1, 0);
+                }
             }
             else
             {
-                SetPlayerId(1, 0);
+                //テスト用（タイトルシーンから移動しなかった場合）
+                SetPlayerId(0, 1);
             }
+            _generateIwasi.InitialGenerate(0,0,0,0);
+            _generateIwasi.InitialGenerate(1,0,90,90);
+            SerectGroup(0);
         }
 
         public void SetPlayerId(int player,int opponent)
