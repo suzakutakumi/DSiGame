@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,15 @@ namespace Player
     {
         private int squareSize = 10;
         private IwasiCore moveGroup;
-        
+        private MoveRangeLine _line;
+        private CreateStage _createStage;
+
+        private void Start()
+        {
+            _line = GetComponent<MoveRangeLine>();
+            _createStage = GameObject.Find("PointCreateStage").GetComponent<CreateStage>();
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -15,10 +24,13 @@ namespace Player
                 Vector2 move = context.ReadValue<Vector2>() * squareSize;
                 float deltaX = transform.position.x - moveGroup.x + move.x;
                 float deltaY = transform.position.z - moveGroup.y + move.y;
+                float supX = _createStage.X * _createStage.GridSize * squareSize - _createStage.GridSize * squareSize / 2;
+                float supZ = _createStage.Z * _createStage.GridSize * squareSize - _createStage.GridSize * squareSize / 2;
                 
                 if (Mathf.Abs(deltaX) <= moveGroup.moveRange * squareSize &&
                     Mathf.Abs(deltaY) <= moveGroup.moveRange * squareSize &&
-                    transform.position.x + move.x >= 0 && transform.position.z + move.y >= 0) 
+                    transform.position.x + move.x >= 0 && transform.position.z + move.y >= 0 &&
+                    transform.position.x + move.x <= supX && transform.position.z + move.y <= supZ) 
                 {
                     MovePointer(move.x, move.y);
                 }
@@ -33,6 +45,7 @@ namespace Player
                 if (moveGroup!=null)
                 {
                     moveGroup.MoveGroup(position.x, position.z);
+                    _line.DrawLine(moveGroup);
                 }
                 else Debug.Log("操作する群れを選んでください");
             }
@@ -42,6 +55,7 @@ namespace Player
         {
             moveGroup = iwasiCore;
             transform.position = new Vector3(moveGroup.x, 4, moveGroup.y);
+            _line.DrawLine(moveGroup);
         }
 
         private void MovePointer(float x,float y)
