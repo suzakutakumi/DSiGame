@@ -11,9 +11,7 @@ namespace Player
         public int attack;
         public int guard;
         public int x, y;
-
         
-
         public void SetStatusFromTemp(IwasiSettingTemp iwasiSettingTemp)
         {
             type = iwasiSettingTemp.type;

@@ -2,21 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerAction : MonoBehaviour
 {
-    [SerializeField] private ActionManager _actionManager;
-    [SerializeField] private GameManager _gameManager;
-    private IwasiCore _iwasiCore;
-    void Start()
+    [SerializeField] private ActionManager actionManager;
+
+    public void Attack()
     {
-        _actionManager.getID(_iwasiCore.id,0);
+        actionManager.Attack();
     }
 
-    public void SetAction(IwasiCore iwasiCore)
+    public void Exchange(string valstr)
     {
-        _iwasiCore = iwasiCore;
+        int val = int.Parse(valstr);
+        actionManager.Exchange(val);
     }
-    
-    
+
+    public void Create(string valstr)
+    {
+        int val = int.Parse(valstr);
+        actionManager.Create(val);
+    }
+
+    public void Evolution()
+    {
+        actionManager.Evolution();
+    }
 }
