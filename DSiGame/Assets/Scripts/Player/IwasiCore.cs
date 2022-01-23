@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Player
@@ -12,7 +13,6 @@ namespace Player
         public int x, y;
         public int moveRange;
         
-
         public void SetStatusFromTemp(IwasiSettingTemp iwasiSettingTemp)
         {
             type = iwasiSettingTemp.type;

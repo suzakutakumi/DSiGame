@@ -6,7 +6,7 @@ namespace Player
     public class PointerMove : MonoBehaviour
     {
         private int squareSize = 10;
-        [SerializeField] private IwasiCore moveGroup;
+        private IwasiCore moveGroup;
         
         public void OnMove(InputAction.CallbackContext context)
         {
