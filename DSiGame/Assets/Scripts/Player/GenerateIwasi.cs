@@ -12,19 +12,19 @@ namespace Player
         private IwasiSetting _iwasiSetting;
         private GameManager _gameManager;
         private int type = 0;
-        private void Start()
+        private void Awake()
         {
             _iwasiSetting = GetComponent<IwasiSetting>();
             _gameManager = GetComponent<GameManager>();
 
             //テスト用
-            Generate(0,type,0,0);
-            Generate(0,type,10,0);
-            Generate(1,type,0,10);
-            Generate(1,type,10,10);
+            InitialGenerate(0,type,0,0);
+            InitialGenerate(0,type,10,0);
+            InitialGenerate(1,type,0,10);
+            InitialGenerate(1,type,10,10);
         }
 
-        public void Generate(int playerId, int type,int x,int y)
+        public void InitialGenerate(int playerId,int type,int x,int y)
         {
             GameObject prefab = _iwasiSetting.GetIwasiSetting(type).prefab;
             if (playerId == _gameManager.myId)
