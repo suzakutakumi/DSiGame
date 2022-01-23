@@ -13,7 +13,15 @@ namespace Player
             if (context.performed)
             {
                 Vector2 move = context.ReadValue<Vector2>() * squareSize;
-                MovePointer(move.x, move.y);
+                float deltaX = transform.position.x - moveGroup.x + move.x;
+                float deltaY = transform.position.z - moveGroup.y + move.y;
+                
+                if (Mathf.Abs(deltaX) <= moveGroup.moveRange * squareSize &&
+                    Mathf.Abs(deltaY) <= moveGroup.moveRange * squareSize &&
+                    transform.position.x + move.x >= 0 && transform.position.z + move.y >= 0) 
+                {
+                    MovePointer(move.x, move.y);
+                }
             }
         }
         
@@ -33,6 +41,7 @@ namespace Player
         public void SetIwasi(IwasiCore iwasiCore)
         {
             moveGroup = iwasiCore;
+            transform.position = new Vector3(moveGroup.x, 4, moveGroup.y);
         }
 
         private void MovePointer(float x,float y)
