@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSound: {fileID: 8300000, guid: 5b1d43515733acb4b9063b66faca75bf, type: 3}
-  ratio: 0.1
+  ratio: 1
   _deltaSize: 100
 --- !u!65 &4157551146553839104
 BoxCollider:
