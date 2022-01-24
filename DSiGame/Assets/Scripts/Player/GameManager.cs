@@ -37,8 +37,8 @@ namespace Player
                 //テスト用（タイトルシーンから移動しなかった場合）
                 SetPlayerId(1, 0);
             }
-            _generateIwasi.InitialGenerate(0,0,0,0);
-            _generateIwasi.InitialGenerate(1,0,90,90);
+            _generateIwasi.InitialGenerate(0,0,0);
+            _generateIwasi.InitialGenerate(0,90,90);
         }
 
         private void Start()
@@ -54,6 +54,7 @@ namespace Player
 
         public void AddGroupToPlayerList(GameObject gameObject)
         {
+            Debug.Log("AddGroupToPlayerList");
             nowPlayerGroup.Add(gameObject);
             gameObject.GetComponent<IwasiCore>().id = nowPlayerGroup.Count - 1;
             _generateButton.Generate(nowPlayerGroup.Count-1);
@@ -61,6 +62,7 @@ namespace Player
 
         public void AddGroupToOpponentList(GameObject gameObject)
         {
+            Debug.Log("AddGroupToOpponentList");
             nowOpponentGroup.Add(gameObject);
             gameObject.GetComponent<IwasiCore>().id = nowOpponentGroup.Count - 1;
         }
