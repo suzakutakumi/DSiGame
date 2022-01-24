@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,10 +35,14 @@ namespace Player
             else
             {
                 //テスト用（タイトルシーンから移動しなかった場合）
-                SetPlayerId(0, 1);
+                SetPlayerId(1, 0);
             }
             _generateIwasi.InitialGenerate(0,0,0,0);
             _generateIwasi.InitialGenerate(1,0,90,90);
+        }
+
+        private void Start()
+        {
             SerectGroup(0);
         }
 

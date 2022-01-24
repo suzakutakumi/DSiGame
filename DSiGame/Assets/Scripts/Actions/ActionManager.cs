@@ -23,7 +23,6 @@ public class ActionManager : MonoBehaviour
     public void SetAction(IwasiCore iwasiCore)
     {
         _iwasiCore = iwasiCore;
-        Debug.Log("aaa");
     }
 
     public void getID(int fromId, int toId)
