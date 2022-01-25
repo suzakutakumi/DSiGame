@@ -18,8 +18,8 @@ namespace Player
             _line = GetComponent<MoveRangeLine>();
             _createStage = GameObject.Find("PointCreateStage").GetComponent<CreateStage>();
             
-            Vector3 myInitialPsition = gameManager.nowPlayerGroup[0].transform.position;
-            MovePointer(myInitialPsition.x,myInitialPsition.z);
+            Vector3 myInitialPosition = gameManager.nowPlayerGroup[0].transform.position;
+            MovePointer(myInitialPosition.x,myInitialPosition.z);
             if(gameManager.myId == 1)this.transform.rotation = Quaternion.Euler(0,180,0);
         }
 

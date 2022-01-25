@@ -18,37 +18,36 @@ namespace Player
             _gameManager = GetComponent<GameManager>();
         }
 
-        public void InitialGenerate(int type,int x,int y)
+        public void InitialGenerate(int playerID,int type,int x,int y)
         {
             GameObject prefab = _iwasiSetting.GetIwasiSetting(type).prefab;
-            if (_gameManager.myId == 0)
+            if (playerID == _gameManager.myId)
             {
-                GameObject generatePlayerPrefab = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity,myGroup);
+                GameObject generatePlayerPrefab = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity, myGroup);;
+                if (_gameManager.myId == 0)
+                {
+                    generatePlayerPrefab.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (_gameManager.myId == 1)
+                {
+                    generatePlayerPrefab.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
                 generatePlayerPrefab.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
                 generatePlayerPrefab.GetComponent<IwasiCore>().x = x;
                 generatePlayerPrefab.GetComponent<IwasiCore>().y = y;
                 _gameManager.AddGroupToPlayerList(generatePlayerPrefab);
             }
-            else if (_gameManager.myId == 1)
+            else if (playerID == _gameManager.opponentId)
             {
-                GameObject generatePlayerPrefab = Instantiate(prefab, new Vector3(x, 1, y), new Quaternion(0,180,0,0),opponentGroup);
-                generatePlayerPrefab.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
-                generatePlayerPrefab.GetComponent<IwasiCore>().x = x;
-                generatePlayerPrefab.GetComponent<IwasiCore>().y = y;
-                _gameManager.AddGroupToPlayerList(generatePlayerPrefab);
-            }
-
-            if (_gameManager.opponentId == 0)
-            {
-                GameObject generateOpponentPrefab = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity,myGroup);
-                generateOpponentPrefab.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
-                generateOpponentPrefab.GetComponent<IwasiCore>().x = x;
-                generateOpponentPrefab.GetComponent<IwasiCore>().y = y;
-                _gameManager.AddGroupToOpponentList(generateOpponentPrefab);
-            }
-            else if (_gameManager.opponentId == 1)
-            {
-                GameObject generateOpponentPrefab = Instantiate(prefab, new Vector3(x, 1, y), new Quaternion(0,180,0,0),opponentGroup);
+                GameObject generateOpponentPrefab = Instantiate(prefab, new Vector3(x, 1, y), Quaternion.identity, opponentGroup);;
+                if (_gameManager.opponentId == 0)
+                {
+                    generateOpponentPrefab.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (_gameManager.opponentId == 1)
+                {
+                    generateOpponentPrefab.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
                 generateOpponentPrefab.GetComponent<IwasiCore>().SetStatusFromTemp(_iwasiSetting.GetIwasiSetting(type));
                 generateOpponentPrefab.GetComponent<IwasiCore>().x = x;
                 generateOpponentPrefab.GetComponent<IwasiCore>().y = y;

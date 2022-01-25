@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61cf2ea95c11af4e8912001ea9010ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 754274719}
+  gameManager: {fileID: 0}
 --- !u!114 &565146606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,7 +765,7 @@ MonoBehaviour:
     guard: 1
     x: 0
     y: 0
-    moveRange: 2
+    moveRange: 0
     prefab: {fileID: 5675225158938088620, guid: 39c7563d5bb202346851cc0f477a7448, type: 3}
   - name: kaeri
     type: 1

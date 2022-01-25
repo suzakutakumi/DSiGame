@@ -31,14 +31,17 @@ namespace Player
                 {
                     SetPlayerId(1, 0);
                 }
+                Debug.Log("RoomNumber:" + room.number);
             }
             else
             {
                 //テスト用（タイトルシーンから移動しなかった場合）
                 SetPlayerId(1, 0);
             }
-            _generateIwasi.InitialGenerate(0,0,0);
-            _generateIwasi.InitialGenerate(0,90,90);
+            Debug.Log("MyID:" + myId);
+            Debug.Log("OpponentID:" + opponentId);
+            _generateIwasi.InitialGenerate(0,0,0,0);
+            _generateIwasi.InitialGenerate(1, 0, 90, 90);
         }
 
         private void Start()
