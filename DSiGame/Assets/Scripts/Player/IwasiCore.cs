@@ -13,6 +13,10 @@ namespace Player
         public int x, y;
         public int moveRange;
         
+        private MoveStruct move;
+        [SerializeField]
+        private HTTPRequest req;
+        
         public void SetStatusFromTemp(IwasiSettingTemp iwasiSettingTemp)
         {
             type = iwasiSettingTemp.type;
@@ -28,6 +32,8 @@ namespace Player
             this.transform.position = new Vector3(x, 1, y);
             this.x = (int)x;
             this.y = (int)y;
+            string body = JsonUtility.ToJson(move);
+            req.POST("https://fishevolution.herokuapp.com/moveGroup",body);
         }
 
         public void Damaged(IwasiCore enemy)

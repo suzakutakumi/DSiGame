@@ -20,9 +20,9 @@ public class ActionManager : MonoBehaviour
         getID(0,0);
     }
     
-    public void SetAction(IwasiCore iwasiCore)
+    public void SetAction(GameObject iwasi)
     {
-        _iwasiCore = iwasiCore;
+        _iwasiCore = iwasi.GetComponent<IwasiCore>();
     }
 
     public void getID(int fromId, int toId)

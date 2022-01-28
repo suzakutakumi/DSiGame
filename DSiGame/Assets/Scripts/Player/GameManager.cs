@@ -36,7 +36,7 @@ namespace Player
             else
             {
                 //テスト用（タイトルシーンから移動しなかった場合）
-                SetPlayerId(1, 0);
+                SetPlayerId(0, 1);
             }
             Debug.Log("MyID:" + myId);
             Debug.Log("OpponentID:" + opponentId);
@@ -74,15 +74,15 @@ namespace Player
         {
             Debug.Log("select" + groupId);
             iwasiCore = nowPlayerGroup[groupId].GetComponent<IwasiCore>();
-            _actionManager.SetAction(iwasiCore);
-            _infoText.SetInfo(iwasiCore);
-            _pointerMove.SetIwasi(iwasiCore);
+            _actionManager.SetAction(nowPlayerGroup[groupId]);
+            _infoText.SetInfo(nowPlayerGroup[groupId]);
+            _pointerMove.SetIwasi(nowPlayerGroup[groupId]);
         }
 
         public void SerectOpponentGroup(int groupId)
         {
             iwasiCore = nowOpponentGroup[groupId].GetComponent<IwasiCore>();
-            _pointerMove.SetIwasi(iwasiCore);
+            _pointerMove.SetIwasi(nowOpponentGroup[groupId]);
         }
 
         public void MoveGroup(int x, int y)
