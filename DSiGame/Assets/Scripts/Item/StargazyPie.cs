@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace Item
 {
-    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
+    [Serializable, RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class StargazyPie : BaseItem
     {
         [SerializeField] private int _deltaSize;
-        [SerializeField] private AudioClip _pickupSound;
+        public int DeltaSize => _deltaSize;
 
         void Start()
         {
@@ -19,7 +19,7 @@ namespace Item
         protected override void PickUp()
         {
             iwasiCore.sizeOfGroup += _deltaSize;
-            AudioSource.PlayClipAtPoint(_pickupSound, transform.position);
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             Debug.Log(type + " ゲット!");
             Destroy(gameObject);
         }

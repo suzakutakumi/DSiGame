@@ -15,6 +15,7 @@ public class CreateStage : MonoBehaviour
     public float GridSize => GridScale;
     public int X => NumX;
     public int Z => NumZ;
+
     
     float EdgeLength()
     {

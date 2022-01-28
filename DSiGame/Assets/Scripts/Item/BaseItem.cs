@@ -11,6 +11,12 @@ namespace Item
     {
         protected ItemType type;
         protected IwasiCore iwasiCore;
+        public AudioClip pickupSound;
+        [SerializeField, Range(0f, 1.0f)] 
+        private float ratio;
+
+        public ItemType Type => type;
+        public float Ratio => ratio;
 
         protected virtual void PickUp()
         {
