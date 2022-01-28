@@ -10,7 +10,7 @@ public class ActionManager : MonoBehaviour
     private IwasiCore toIwasi;
     private IwasiCore _iwasiCore;
 
-    [SerializeField] private GenerateIwasi generate = new GenerateIwasi();
+    [SerializeField] private GenerateIwasi generate;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +20,9 @@ public class ActionManager : MonoBehaviour
         getID(0,0);
     }
     
-    public void SetAction(IwasiCore iwasiCore)
+    public void SetAction(GameObject iwasi)
     {
-        _iwasiCore = iwasiCore;
-        Debug.Log("aaa");
+        _iwasiCore = iwasi.GetComponent<IwasiCore>();
     }
 
     public void getID(int fromId, int toId)

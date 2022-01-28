@@ -9,6 +9,7 @@ namespace Player
         private int squareSize = 10;
         private IwasiCore moveGroup;
         [SerializeField] private GameManager gameManager;
+        [SerializeField] private GameObject cameraObject;
         
         private MoveRangeLine _line;
         private CreateStage _createStage;
@@ -17,10 +18,6 @@ namespace Player
         {
             _line = GetComponent<MoveRangeLine>();
             _createStage = GameObject.Find("PointCreateStage").GetComponent<CreateStage>();
-            
-            Vector3 myInitialPsition = gameManager.nowPlayerGroup[0].transform.position;
-            MovePointer(myInitialPsition.x,myInitialPsition.z);
-            if(gameManager.myId == 1)this.transform.rotation = Quaternion.Euler(0,180,0);
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -57,16 +54,33 @@ namespace Player
             }
         }
 
-        public void SetIwasi(IwasiCore iwasiCore)
+        public void SetIwasi(GameObject iwasi)
         {
-            moveGroup = iwasiCore;
+            if (gameManager.myId == 0)
+            {
+                cameraObject.transform.localPosition = new Vector3(0, 4, -10);
+                cameraObject.transform.localRotation = Quaternion.Euler(20,0,0);
+            }
+            else if (gameManager.myId == 1)
+            {
+                cameraObject.transform.localPosition = new Vector3(0, 4, 10);
+                cameraObject.transform.localRotation = Quaternion.Euler(20,180,0);
+            }
+            moveGroup = iwasi.GetComponent<IwasiCore>();
             transform.position = new Vector3(moveGroup.x, 4, moveGroup.y);
             _line.DrawLine(moveGroup);
         }
 
         private void MovePointer(float x,float y)
         {
-            this.transform.position += new Vector3(x, 0, y);
+            if (gameManager.myId == 0)
+            {
+                transform.position += new Vector3(x, 0, y);
+            }
+            else if (gameManager.myId == 1)
+            {
+                transform.position += new Vector3(-x, 0, -y);
+            }
         }
     }
 }
